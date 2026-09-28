@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصة البوثات — خطة العمل</title>
+<meta name="description" content="Booth Platform — the idea, what we tested, the plan. Working title; no brand name yet.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C1622'/%3E%3Crect x='7' y='7' width='18' height='14' fill='%233B2418' stroke='%23E7A866'/%3E%3Crect x='10' y='13' width='12' height='6' fill='%23E7A866'/%3E%3Crect x='5' y='23' width='22' height='3' fill='%23AAB7C7'/%3E%3C/svg%3E">
+<meta property="og:title" content="منصة البوثات — خطة العمل">
+<meta property="og:description" content="Booth Platform (working title): the idea, what we tested, the plan and what we need.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&text=0123456789%24.%2C%25%2B-%E2%88%92%C3%97/%C2%B7%E2%89%88%C2%B1%E2%89%A4%E2%89%A5%3C%3E~%C2%B2%3AABCKMWPkmsxohlatfr%20&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C1622; --panel:#132132; --panel2:#182A40; --line:#26394F;
+  --text:#F1E9DA; --muted:#AAB7C7; --faint:#8FA0B4;
+  --accent:#E7A866; --accent-soft:rgba(231,168,102,.13);
+  --ok:#8BD3A8; --bad:#F09A88;
+  --ar:"IBM Plex Sans Arabic", system-ui, sans-serif;
+  --num:"Fraunces", Georgia, serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overscroll-behavior-x:none;height:100%;background:var(--bg);color:var(--text);font-family:var(--ar);overflow:hidden;-webkit-font-smoothing:antialiased}
+body{font-size:16px;line-height:1.55}
+bdi,.num{direction:ltr;unicode-bidi:isolate}
+.num,.big{font-family:var(--num);font-feature-settings:"lnum","tnum";font-weight:500}
+.big{direction:ltr;unicode-bidi:isolate}
+
+.stage{position:absolute;top:50%;left:50%;width:1600px;height:900px;transform-origin:center center;transform:translate(-50%,-50%)}
+.slide{position:absolute;inset:0;padding:78px 100px 96px;display:none;flex-direction:column;
+  background:radial-gradient(1200px 700px at 85% 0%, rgba(231,168,102,.07), transparent 60%),var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(170,183,199,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(170,183,199,.05) 1px,transparent 1px);
+  background-size:40px 40px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.slide.on{display:flex;animation:fadein .35s ease}
+.slide > *{position:relative}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+.kicker{display:flex;align-items:center;gap:14px;color:var(--accent);font-size:18px;font-weight:600;margin-bottom:16px}
+.kicker .n{font-family:var(--num);color:var(--faint);font-weight:500}
+.kicker::after{content:"";flex:0 0 60px;height:1px;background:var(--accent);opacity:.6}
+h1{font-size:84px;line-height:1.1;font-weight:600}
+h2{font-size:54px;line-height:1.2;font-weight:600;max-width:1350px}
+.lead{font-size:26px;color:var(--muted);margin-top:10px}
+.body{flex:1;min-height:0;margin-top:34px;display:flex;flex-direction:column;justify-content:center}
+.src{position:absolute;bottom:36px;right:100px;left:320px;font-size:14px;color:var(--faint)}
+.accent{color:var(--accent)}
+.ic{width:56px;height:56px;flex:0 0 auto;color:var(--accent)}
+.ic svg{width:100%;height:100%;display:block}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.card.hi{border-color:rgba(231,168,102,.6);background:linear-gradient(180deg,rgba(231,168,102,.1),var(--panel) 75%)}
+
+/* 1 heard */
+.heard{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.heard .card{display:flex;flex-direction:row;align-items:center;gap:22px;min-height:170px;padding:26px 28px}
+.heard p{font-size:29px;line-height:1.45}
+
+/* 2 problem */
+.prob{display:grid;grid-template-columns:1fr 1.1fr 1fr;align-items:center;gap:30px}
+.quote{text-align:center}
+.quote .big{font-size:150px;line-height:1;display:block}
+.quote p{font-size:28px;color:var(--muted);margin-top:10px}
+.prob .booth svg{width:100%;height:auto;display:block}
+.prob .arr{color:var(--accent);font-size:40px;text-align:center}
+.bottomline{font-size:32px;margin-top:34px;text-align:center}
+
+/* 3 idea / flow */
+.flow{display:flex;align-items:stretch;gap:0}
+.flow .st{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 24px;min-height:330px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.flow .st .k{font-family:var(--num);color:var(--accent);font-size:30px;line-height:1}
+.flow .st p{font-size:27px;line-height:1.45}
+.flow .st.hi{border-color:var(--accent);background:var(--accent-soft)}
+.flow .ar{flex:0 0 40px;display:grid;place-items:center;color:var(--accent);font-size:26px}
+.prices{display:flex;gap:8px}
+.prices span{font-family:var(--num);font-size:22px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:2px 10px}
+.flow.mini .st{padding:18px 20px;gap:8px;min-height:0}
+.flow.mini .st p{font-size:24px}
+
+/* 4 venn */
+.venn{display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center}
+.venn svg{width:100%;height:auto;display:block}
+.venn .txt p{font-size:32px;line-height:1.6}
+.venn .txt p + p{margin-top:12px}
+
+/* 5 done */
+.stations{display:flex;align-items:center;gap:0;margin-bottom:40px}
+.stations .s{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.stations .s .dot{width:100px;height:100px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center}
+.stations .s .dot .ic{width:46px;height:46px}
+.stations .s span{font-size:23px;color:var(--muted)}
+.stations .ln{flex:0 0 36px;height:2px;background:var(--accent);opacity:.6;margin-bottom:40px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.facts .card .big{font-size:84px;line-height:1;display:block;color:var(--accent)}
+.facts .card p{font-size:24px;margin-top:10px;line-height:1.45}
+
+/* 6 honest */
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.honest .col{border-radius:16px;padding:36px 38px;min-height:340px;border:1px solid var(--line);background:var(--panel)}
+.honest .col h3{font-size:36px;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.honest .col.ok{border-top:5px solid var(--ok)} .honest .col.ok h3{color:var(--ok)}
+.honest .col.no{border-top:5px solid var(--faint)} .honest .col.no h3{color:var(--muted)}
+.honest li{list-style:none;font-size:31px;line-height:1.5;padding-inline-start:34px;position:relative;margin-bottom:16px}
+.honest li::before{position:absolute;right:0;top:0;font-weight:700}
+.honest .ok li::before{content:"✓";color:var(--ok)}
+.honest .no li::before{content:"✕";color:var(--bad)}
+
+/* 7 plan stairs */
+.stairs{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:18px;align-items:end}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:10px}
+.step .k{font-family:var(--num);font-size:54px;color:var(--accent);line-height:1}
+.step h3{font-size:29px;font-weight:600}
+.step p{font-size:23px;color:var(--muted)}
+.step p b{color:var(--text);font-weight:600}
+.pair{display:flex;flex-direction:column;gap:12px;position:relative}
+.pair .tag{font-size:20px;color:var(--accent);text-align:center}
+.s1{margin-bottom:0}.s4{min-height:380px;border-color:var(--accent)}
+.after{font-size:25px;color:var(--muted);margin-top:26px}
+
+/* 8 asks */
+.asks{display:grid;grid-template-columns:1fr 1.25fr;gap:26px;align-items:start}
+.asks ol{list-style:none;display:flex;flex-direction:column;gap:12px}
+.asks li{display:flex;gap:16px;align-items:baseline;font-size:28px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.asks li .k{font-family:var(--num);color:var(--accent);font-size:26px}
+.asks li.hi{border-color:var(--accent);background:var(--accent-soft)}
+.ba{display:grid;grid-template-columns:70px 1fr;gap:16px 14px;align-items:center;margin-top:18px}
+.ba .lbl{font-size:18px;color:var(--faint)}
+.ba .fl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:23px}
+.ba .fl span{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+.ba .fl span.x{border-color:var(--accent);background:var(--accent-soft)}
+.ba .fl i{font-style:normal;color:var(--accent)}
+
+/* 9 two weeks */
+.cal{display:grid;grid-template-columns:260px repeat(10,1fr);gap:14px 6px;align-items:center}
+.cal .wk{grid-column:span 5;text-align:center;font-size:24px;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cal .lab{font-size:28px}
+.cal .bar{height:70px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--accent);display:flex;align-items:center;padding:0 20px;font-size:23px;color:var(--text)}
+.cal .bar.go{background:linear-gradient(270deg,rgba(231,168,102,.35),rgba(231,168,102,.05));}
+.cal .gap{height:70px}
+
+/* 10 close */
+.close h1{font-size:76px}
+.close .lead{font-size:28px}
+
+/* chrome */
+.brand{position:fixed;top:18px;right:24px;font-size:14px;color:var(--faint);z-index:5}
+.brand b{color:var(--muted);font-weight:600}
+.nav{position:fixed;left:18px;bottom:16px;display:flex;align-items:center;gap:10px;z-index:6}
+.nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(19,33,50,.9);color:var(--text);font-size:20px;cursor:pointer;display:grid;place-items:center;font-family:var(--ar)}
+.nav button:hover{border-color:var(--accent);color:var(--accent)}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.count{font-family:var(--num);font-size:16px;color:var(--muted);min-width:64px;text-align:center}
+.pbar{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(38,57,79,.6);z-index:6}
+.pbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .35s ease;margin-left:auto}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}.pbar i{transition:none}}
+
+/* phone / tablet flow */
+body.m .stage{position:fixed;inset:0;width:100vw;height:100dvh;transform:none!important;top:0;left:0}
+body.m .slide{padding:58px 18px 100px;overflow-y:auto;overflow-x:hidden}
+body.m .slide.on{display:block}
+body.m h1{font-size:40px} body.m .close h1{font-size:34px}
+body.m h2{font-size:28px}
+body.m .lead{font-size:18px}
+body.m .body{margin-top:20px;display:block}
+body.m .heard,body.m .prob,body.m .venn,body.m .facts,body.m .honest,body.m .stairs,body.m .asks{grid-template-columns:1fr}
+body.m .heard .card{min-height:0;flex-direction:row;align-items:center}
+body.m .heard p,body.m .honest li,body.m .asks li,body.m .venn .txt p,body.m .bottomline{font-size:18px}
+body.m .quote .big{font-size:64px}
+body.m .quote p{font-size:17px}
+body.m .prob .booth{max-width:220px;margin:0 auto}
+body.m .prob .arr{display:none}
+body.m .flow,body.m .stations{flex-direction:column;align-items:stretch}
+body.m .flow .ar{flex-basis:30px;transform:rotate(-90deg)}
+body.m .flow .st{flex-direction:row;align-items:center}
+body.m .flow .st p{font-size:18px}
+body.m .stations .s{flex-direction:row;gap:14px}
+body.m .stations .s .dot{width:50px;height:50px}
+body.m .stations .s span{font-size:17px}
+body.m .stations .ln{width:2px;height:14px;flex:0 0 14px;margin:0 24px 0 0}
+body.m .facts .card .big{font-size:44px}
+body.m .facts .card p,body.m .step p{font-size:17px}
+body.m .s4{min-height:0}
+.mo{display:none}
+body.m .mo{display:inline}
+body.m .cal{grid-template-columns:1fr;gap:6px}
+body.m .cal > span:first-child,body.m .cal .wk,body.m .cal .gap{display:none}
+body.m .cal .bar{grid-column:auto!important;height:auto!important;padding:12px!important;font-size:16px!important}
+body.m .cal .lab{margin-top:10px}
+body.m .cal .lab{font-size:15px}
+body.m .cal .bar{font-size:14px;padding:0 6px;height:48px}
+body.m .cal .gap{height:48px}
+body.m .flow .st{min-height:0;padding:16px}
+body.m .heard .card{padding:16px}
+body.m .honest .col{min-height:0;padding:20px}
+body.m .ic{width:40px;height:40px}
+body.m .step h3{font-size:20px}
+body.m .facts .card p{font-size:17px}
+body.m .stations .s .dot{width:50px;height:50px}
+body.m .stations .s .dot .ic{width:26px;height:26px}
+body.m .cal .wk{font-size:15px}
+body.m .src{position:static;margin-top:20px}
+body.m .brand{top:12px;right:16px;background:rgba(12,22,34,.92);padding:2px 6px;border-radius:6px}
+body.m .nav{left:50%;transform:translateX(-50%);bottom:14px}
+body.m .ba{grid-template-columns:1fr}
+body.m .ba .fl{font-size:16px}
+@media print{html,body{overflow:visible;height:auto}.nav,.pbar,.brand{display:none}.stage{position:static;transform:none!important}.slide{position:relative;display:flex!important;height:900px;break-after:page;animation:none}@page{size:1600px 900px;margin:0}}
+</style>
+<script>document.documentElement.className='js';</script>
+<style id="nojs-fallback">
+html.nojs,html.nojs body{height:auto!important;overflow:auto!important}
+html.nojs .stage{position:static!important;transform:none!important;width:auto!important;height:auto!important;inset:auto!important;max-width:1100px;margin:0 auto}
+html.nojs .slide{display:block!important;position:relative!important;height:auto!important;min-height:0!important;padding:48px 20px!important;overflow:visible!important;border-bottom:1px solid rgba(255,255,255,.12)}
+html.nojs .nav,html.nojs .progress,html.nojs .bar{display:none!important}
+html.nojs .slide .src{position:static!important;margin-top:16px}
+@media (max-width:820px){html.nojs .slide *{grid-template-columns:1fr!important;min-width:0!important;max-width:100%}html.nojs .slide [style*="display:flex"],html.nojs .slide .row{flex-wrap:wrap!important}html.nojs .slide svg{width:100%!important;height:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="8" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="16.5" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 19c0-3 2.5-5 5-5s5 2 5 5M14 18.5c.3-2.4 1.8-4 3.5-4 2 0 3.5 1.8 3.5 4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.3 8.3-7 10-3.7-1.7-7-5-7-10V6z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-booth" viewBox="0 0 24 24"><path d="M3 20h18M5 20V6h14v14M8 9h8v5H8zM9 20v-3h6v3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z M12 12l8-4.5 M12 12v9 M12 12L4 7.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M3 14h18M9 4v16" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.5l3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-rules" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7z M15 3v4h4 M10 12h6M10 16h6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-parts" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 16l5-5 4 4 3-3 6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  </defs>
+</svg>
+<div class="brand"><b>منصة البوثات</b> · <bdi>Booth Platform</bdi> — اسم عمل مؤقت</div>
+
+<main class="stage" id="stage" aria-roledescription="presentation">
+
+<!-- 1 HEARD -->
+<section class="slide" aria-label="سمعناك">
+  <div class="kicker"><span class="n">01</span> منصة البوثات</div>
+  <h2>سمعناك بالاجتماع:</h2>
+  <div class="body">
+    <div class="heard">
+      <div class="card"><span class="ic"><svg><use href="#i-map"/></svg></span><p>المنصة للسعودية أولاً، على الموبايل والويب.</p></div>
+      <div class="card"><span class="ic"><svg><use href="#i-clock"/></svg></span><p>العارض ما بيعطي أكتر من 10 دقايق.</p></div>
+      <div class="card"><span class="ic"><svg><use href="#i-team"/></svg></span><p>المنفّذين: شركات صغيرة ومتوسطة، منختارهم نحنا بزيارة.</p></div>
+      <div class="card"><span class="ic"><svg><use href="#i-shield"/></svg></span><p>التصميم لازم ينحمى.</p></div>
+      <div class="card"><span class="ic"><svg><use href="#i-booth"/></svg></span><p>البداية: بوثات بس.</p></div>
+      <div class="card"><span class="ic"><svg><use href="#i-rules"/></svg></span><p>«الحوكمة» هي الكلمة يلي بتبيع بالسعودية.</p></div>
+    </div>
+  </div>
+  <p class="src">المصدر: تسجيل اجتماعنا بـ26 سبتمبر</p>
+</section>
+
+<!-- 2 PROBLEM -->
+<section class="slide" aria-label="المشكلة">
+  <div class="kicker"><span class="n">02</span> المشكلة</div>
+  <h2>نفس البوث، كل مسعّر بيقراه غير.</h2>
+  <div class="body">
+    <div class="prob">
+      <div class="quote card"><span class="big">5k</span><p>واحد بيحسبو خشب</p></div>
+      <div class="booth" aria-hidden="true">
+        <svg viewBox="0 0 320 240"><g fill="none" stroke="#AAB7C7" stroke-width="2">
+          <path d="M20 220h280"/><rect x="50" y="40" width="220" height="170" fill="#3B2418" stroke="#C9A27A"/>
+          <rect x="90" y="60" width="140" height="90" fill="#E7A866" stroke="none" opacity=".9"/>
+          <rect x="110" y="140" width="100" height="70" fill="#24160F" stroke="#C9A27A"/>
+          <path d="M30 120h-20m300 0h-20" stroke="#E7A866"/>
+        </g></svg>
+      </div>
+      <div class="quote card"><span class="big" style="color:var(--bad)">15k</span><p>واحد بيحسبو حديد</p></div>
+    </div>
+    <p class="bottomline">العارض ما بيقدر يقارن، لأنو كل عرض عم يسعّر شي مختلف.</p>
+  </div>
+  <p class="src">المصدر: مثال يحيى بالاجتماع</p>
+</section>
+
+<!-- 3 IDEA -->
+<section class="slide" aria-label="الفكرة">
+  <div class="kicker"><span class="n">03</span> الفكرة</div>
+  <h2>الحل: قائمة وحدة للكل.</h2>
+  <div class="body">
+    <div class="flow">
+      <div class="st"><span class="ic"><svg><use href="#i-cube"/></svg></span><span class="k">١</span><p>موديل <bdi>3D</bdi> للبوث من قطع حقيقية.</p></div><div class="ar">←</div>
+      <div class="st hi"><span class="ic"><svg><use href="#i-table"/></svg></span><span class="k">٢</span><p>من الموديل بيطلع جدول الكميات والكلفة (<bdi>BOQ</bdi>) تلقائياً.</p></div><div class="ar">←</div>
+      <div class="st"><div class="prices"><span>A</span><span>B</span><span>C</span></div><span class="k">٣</span><p>كل المنفّذين بيسعّروا نفس الجدول، سطر بسطر.</p></div><div class="ar">←</div>
+      <div class="st"><span class="ic"><svg><use href="#i-check"/></svg></span><span class="k">٤</span><p>العارض بيقارن السعر والتقييم والرخصة، وبيختار.</p></div>
+    </div>
+  </div>
+  <p class="src">المصدر: خطة العمل · اجتماعنا</p>
+</section>
+
+<!-- 4 NEW -->
+<section class="slide" aria-label="شو الجديد">
+  <div class="kicker"><span class="n">04</span> شو الجديد</div>
+  <h2>ما حدا جامع الاتنين.</h2>
+  <div class="body">
+    <div class="venn">
+      <svg viewBox="0 0 600 360" role="img" aria-label="دايرة أدوات التصميم ودايرة منصات المنفّذين، والتقاطع بينهم فاضي وهو مكاننا">
+        <circle cx="210" cy="180" r="150" fill="rgba(170,183,199,.08)" stroke="#AAB7C7" stroke-width="2"/>
+        <circle cx="390" cy="180" r="150" fill="rgba(170,183,199,.08)" stroke="#AAB7C7" stroke-width="2"/>
+        <path d="M300 60 A150 150 0 0 1 300 300 A150 150 0 0 1 300 60z" fill="rgba(231,168,102,.35)" stroke="#E7A866" stroke-width="3"/>
+        <text x="455" y="188" text-anchor="middle" font-size="30" fill="#F1E9DA">تصميم بالـAI</text>
+        <text x="145" y="188" text-anchor="middle" font-size="30" fill="#F1E9DA">منفّذين</text>
+        <text x="300" y="190" text-anchor="middle" font-size="32" font-weight="600" fill="#F1E9DA">نحنا</text>
+      </svg>
+      <div class="txt">
+        <p>بالسوق في أدوات بتصمّم بوثات بالـ<bdi>AI</bdi>، وفي منصات بتجمع منفّذين.</p>
+        <p>ما حدا بيربط التصميم بجدول كميات واحد كل المنفّذين بيسعّروه.</p>
+        <p class="accent">هيدا يلي منعملو.</p>
+      </div>
+    </div>
+  </div>
+  <p class="src">المصدر: بحثنا عن المنافسين (مش شامل)</p>
+</section>
+
+<!-- 5 DONE -->
+<section class="slide" aria-label="شو عملنا لهلق">
+  <div class="kicker"><span class="n">05</span> شو عملنا لهلق</div>
+  <h2>جرّبنا الطريقة كاملة على بوث تجريبي.</h2>
+  <div class="body">
+    <div class="stations" aria-hidden="true">
+      <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-brief"/></svg></span></span><span>بريف</span></div><div class="ln"></div>
+      <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-rules"/></svg></span></span><span>قوانين</span></div><div class="ln"></div>
+      <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-pen"/></svg></span></span><span>تصميم</span></div><div class="ln"></div>
+      <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-parts"/></svg></span></span><span>قائمة قطع</span></div><div class="ln"></div>
+      <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-table"/></svg></span></span><span>جدول</span></div><div class="ln"></div>
+      <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-image"/></svg></span></span><span>صور</span></div>
+    </div>
+    <div class="facts">
+      <div class="card"><span class="big">12</span><p>مساعد <bdi>AI</bdi> متخصّص: قوانين معارض، تصنيع، <bdi>3D</bdi>، تسعير، ويب.</p></div>
+      <div class="card"><span class="big">1</span><p>بوث تجريبي <bdi>3×3</bdi>، معرض بالرياض.</p></div>
+      <div class="card"><span class="big">9</span><p>مساعدين <bdi>AI</bdi> منهم اشتغلوا عالبوث التجريبي، وانفحص شغلهم كلّو ونجحوا.</p></div>
+      <div class="card"><span class="big">0</span><p>اشتراك جديد دفعناه.</p></div>
+    </div>
+  </div>
+  <p class="src">المصدر: خطة العمل · نتائج تجربة البوث التجريبي</p>
+</section>
+
+<!-- 6 HONEST -->
+<section class="slide" aria-label="شو طلع معنا">
+  <div class="kicker"><span class="n">06</span> بصراحة</div>
+  <h2>شو طلع معنا.</h2>
+  <div class="body">
+    <div class="honest">
+      <div class="col ok"><h3>ثبت</h3><ul>
+        <li>الطريقة شغّالة على الورق: الكميات طلعت صحّ، وحتى لقطنا غلطة بالمعادلة وصلّحناها.</li></ul></div>
+      <div class="col no"><h3>لسّا</h3><ul>
+        <li>2 من كل 3 بنود بالجدول بلا سعر — بدها عروض من المورّدين، وما طلبناها بعد.</li>
+        <li>لسّا ما بنينا شي: لا <bdi>3D</bdi>، ولا ديمو.</li></ul></div>
+    </div>
+  </div>
+  <p class="src">المصدر: نتائج تجربة البوث التجريبي</p>
+</section>
+
+<!-- 7 PLAN -->
+<section class="slide" aria-label="الخطة">
+  <div class="kicker"><span class="n">07</span> الخطة</div>
+  <h2>الخطة بـ4 خطوات.</h2>
+  <div class="body">
+    <div class="stairs">
+      <div class="step s1"><span class="k">١</span><h3>حوالي 10 بوثات جاهزة</h3><p>← <b>بتشوف التصاميم</b></p></div>
+      <div class="pair"><span class="tag">٢ و٣ سوا</span>
+        <div class="step"><span class="k">٢</span><h3>أسعار من المورّدين</h3><p>← <b>بتشوف سعر حقيقي</b></p></div>
+        <div class="step"><span class="k">٣</span><h3>أول موديل <bdi>3D</bdi> بيحسب جدولو</h3><p>← <b>بتشوف الفكرة شغّالة</b></p></div>
+      </div>
+      <div class="step s4"><span class="k">٤</span><h3>ديمو عالموبايل</h3><p>← <b>لمستثمر أو منظّم</b></p></div>
+    </div>
+    <p class="after">بعدها منركّب على شاشاتك. الوقت مربوط بوصول الأسعار.</p>
+  </div>
+  <p class="src">المصدر: خطة العمل</p>
+</section>
+
+<!-- 8 ASKS -->
+<section class="slide" aria-label="شو محتاجين منك">
+  <div class="kicker"><span class="n">08</span> شو محتاجين منك</div>
+  <h2>شو محتاجين منك — 5 أشيا.</h2>
+  <div class="body">
+    <div class="asks">
+      <ol>
+        <li><span class="k">١</span>موافقتك على الخطة.</li>
+        <li><span class="k">٢</span>مقاسات <bdi>5×3</bdi> و<bdi>6×4</bdi> موجودة بالسعودية؟</li>
+        <li><span class="k">٣</span>كتيّب شروط العارضين لمعرض أو معرضين سعوديين.</li>
+        <li class="hi"><span class="k">٤</span>الـ<bdi>3D</bdi> قبل الصور — لأنو الصورة ما بيطلع منها جدول كميات.</li>
+        <li><span class="k">٥</span>شاشاتك، لما تجهز.</li>
+      </ol>
+      <div class="card hi">
+        <p style="font-size:22px">البند ٤ بيغيّر ترتيب شاشاتك</p>
+        <div class="ba">
+          <span class="lbl">قبل</span><div class="fl"><span>حكي</span><i>←</i><span class="x">3 صور</span><i>←</i><span><bdi>3D</bdi></span></div>
+          <span class="lbl">بعد</span><div class="fl"><span>حكي</span><i>←</i><span class="x">توزيع البوث</span><i>←</i><span><bdi>3D</bdi> + جدول</span><i>←</i><span>صورة (اختيارية)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="src">المصدر: خطة العمل · اجتماعنا</p>
+</section>
+
+<!-- 9 TWO WEEKS -->
+<section class="slide" aria-label="الأسبوعين الجايين">
+  <div class="kicker"><span class="n">09</span> الأسبوعين الجايين</div>
+  <h2>إذا وافقت اليوم:</h2>
+  <div class="body">
+    <div class="cal" role="img" aria-label="رزنامة أسبوعين: المكتبة على الأسبوعين، طلبات الأسعار بعد موافقة يحيى، تجربة الـAI بالأسبوع التاني">
+      <span></span><span class="wk">الأسبوع ١</span><span class="wk">الأسبوع ٢</span>
+      <span class="lab">المكتبة</span><div class="bar" style="grid-column:span 10"><span>منبلّش: قوانين + تصاميم<span class="mo"> · الأسبوعين</span></span></div>
+      <span class="lab">طلبات الأسعار</span><div class="bar go" style="grid-column:span 10"><span>بعد موافقة يحيى: نبعت طلبات الأسعار للمورّدين — أبطأ شي بالمشروع</span></div>
+      <span class="lab">تجربة الـ<bdi>AI</bdi></span><div class="gap" style="grid-column:span 5"></div><div class="bar" style="grid-column:span 5"><span>نجرّب الـ<bdi>AI</bdi> يصمّم بوث خاص (زاوية <bdi>6×3</bdi>)<span class="mo"> · الأسبوع ٢</span></span></div>
+    </div>
+  </div>
+  <p class="src">المصدر: خطة العمل</p>
+</section>
+
+<!-- 10 CLOSE -->
+<section class="slide close" aria-label="الخلاصة">
+  <div class="kicker"><span class="n">10</span> الخلاصة</div>
+  <h1>جدول واحد. كل المنفّذين. مقارنة عادلة.</h1>
+  <p class="lead">جرّبنا الطريقة، وقلنالك شو ثبت وشو لسّا.</p>
+  <div class="body" style="justify-content:flex-start">
+    <div class="flow mini" aria-hidden="true">
+      <div class="st"><span class="ic"><svg><use href="#i-cube"/></svg></span><p>موديل</p></div><div class="ar">←</div>
+      <div class="st"><span class="ic"><svg><use href="#i-table"/></svg></span><p>جدول</p></div><div class="ar">←</div>
+      <div class="st"><div class="prices"><span>A</span><span>B</span><span>C</span></div><p>3 أسعار</p></div>
+    </div>
+    <p class="lead accent" style="margin-top:34px;font-size:34px">الخطوة الجاية: موافقتك.</p>
+  </div>
+</section>
+
+</main>
+
+<div class="nav" role="navigation" aria-label="التنقّل بين الشرائح">
+  <button id="prev" type="button" aria-label="الشريحة السابقة" title="السابقة">›</button>
+  <span class="count" id="count" dir="ltr" aria-live="polite">1 / 10</span>
+  <button id="next" type="button" aria-label="الشريحة التالية" title="التالية">‹</button>
+</div>
+<div class="pbar" aria-hidden="true"><i id="bar"></i></div>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var countEl=document.getElementById('count'), barEl=document.getElementById('bar');
+  var i=-1, N=slides.length;
+  function go(n){
+    n=Math.max(0,Math.min(N-1,n));
+    slides.forEach(function(s,k){var on=k===n;s.classList.toggle('on',on);s.setAttribute('aria-hidden',on?'false':'true');if('inert' in s){s.inert=!on;}});
+    i=n;
+    countEl.textContent=(n+1)+' / '+N;
+    barEl.style.width=((n+1)/N*100)+'%';
+    slides[n].scrollTop=0;
+    if(location.hash!=='#'+(n+1)){try{history.replaceState(null,'','#'+(n+1));}catch(e){}}
+  }
+  function isMobile(){
+    var w=window.innerWidth,h=window.innerHeight;
+    return w<820||(h>w&&w<1100)||Math.min(w/1600,h/900)<0.75;
+  }
+  function fit(){
+    var m=isMobile(); document.body.classList.toggle('m',m);
+    if(!m){var s=Math.min(window.innerWidth/1600,window.innerHeight/900);stage.style.transform='translate(-50%,-50%) scale('+s+')';}
+    else{stage.style.transform='none';}
+  }
+  window.addEventListener('resize',fit);
+  document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();go(i+1);});
+  document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();go(i-1);});
+  document.addEventListener('keydown',function(e){
+    var k=e.key, t=e.target;
+    if(t&&t.closest&&t.closest('button,a,input,textarea,select')&&(k===' '||k==='Enter'))return;
+    var m=document.body.classList.contains('m');
+    if(k==='ArrowLeft'||k==='PageDown'||k===' '||k==='Enter'){e.preventDefault();go(i+1);}
+    else if(k==='ArrowRight'||k==='PageUp'){e.preventDefault();go(i-1);}
+    else if(k==='ArrowDown'&&!m){e.preventDefault();go(i+1);}
+    else if(k==='ArrowUp'&&!m){e.preventDefault();go(i-1);}
+    else if(k==='Home'){e.preventDefault();go(0);} else if(k==='End'){e.preventDefault();go(N-1);}
+  });
+  stage.addEventListener('click',function(e){
+    if(document.body.classList.contains('m'))return;
+    if(e.target.closest('a,button,.scrollx'))return;
+    if(window.getSelection&&String(window.getSelection()))return;
+    var r=stage.getBoundingClientRect();
+    if(e.clientX>r.left+r.width*0.85){go(i-1);}else{go(i+1);}
+  });
+  /* swipe: ignored when the touch starts inside anything that scrolls sideways */
+  function inHScroll(el){
+    while(el&&el!==document.body){
+      if(el.classList&&el.classList.contains('scrollx'))return true;
+      if(el.scrollWidth>el.clientWidth+1){var ox=getComputedStyle(el).overflowX;if(ox==='auto'||ox==='scroll')return true;}
+      el=el.parentElement;
+    }
+    return false;
+  }
+  var sx=NaN,sy=0,t0=0;
+  document.addEventListener('touchstart',function(e){
+    if(e.touches.length!==1||inHScroll(e.target)){sx=NaN;return;}
+    var t=e.touches[0];sx=t.clientX;sy=t.clientY;t0=Date.now();
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(isNaN(sx))return;
+    var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy; sx=NaN;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-t0<800){ if(dx<0)go(i+1); else go(i-1); }
+  },{passive:true});
+  function fromHash(){var x=parseInt((location.hash||'').slice(1),10);return isNaN(x)?0:x-1;}
+  window.addEventListener('hashchange',function(){var n=fromHash();if(n!==i)go(n);});
+  fit(); go(fromHash());
+})();
+</script>
+</body>
+</html>
