@@ -208,6 +208,21 @@ body.m .nav{left:50%;transform:translateX(-50%);bottom:14px}
 body.m .ba{grid-template-columns:1fr}
 body.m .ba .fl{font-size:16px}
 @media print{html,body{overflow:visible;height:auto}.nav,.pbar,.brand{display:none}.stage{position:static;transform:none!important}.slide{position:relative;display:flex!important;height:900px;break-after:page;animation:none}@page{size:1600px 900px;margin:0}}
+/* team */
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.mem{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c,var(--accent));border-radius:12px;padding:14px 14px}
+.mem .ic{width:34px;height:34px;color:var(--c,var(--accent));margin-top:2px}
+.mem h3{font-size:21px;font-weight:600;line-height:1.25}
+.mem .role{display:block;font-size:15px;color:var(--c,var(--accent));font-weight:600;margin:2px 0 4px}
+.mem p{font-size:16px;color:var(--muted);line-height:1.45}
+.g1{--c:#E7A866}.g2{--c:#8BD3A8}.g3{--c:#C9B8F0}.g4{--c:#9EC5F0}
+.legend-g{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px;font-size:16px;color:var(--muted)}
+.legend-g span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--c);margin-inline-end:7px;vertical-align:-1px}
+body.m .team{grid-template-columns:1fr}
+body.m .mem h3{font-size:18px}
+body.m .mem p{font-size:16px}
+html.nojs .team{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+@media (max-width:820px){html.nojs .team{grid-template-columns:1fr!important}}
 </style>
 <script>document.documentElement.className='js';</script>
 <style id="nojs-fallback">
@@ -235,6 +250,14 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
     <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-parts" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
     <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 16l5-5 4 4 3-3 6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-hub" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="4.5" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="19.5" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="20.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6.3 7.1l3.2 2.8M17.7 7.1l-3.2 2.8M12 15v3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 15.5L21 21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.5 5.5a4 4 0 0 0 4.9 4.9L21 12l-9 9-3-3 9-9-1.6-1.6a4 4 0 0 1-4.9-4.9l2.6 2.6 2-2z M3 21l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 20h6M12 16v4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-5 4v-4H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-slides" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 16v4M8 21h8M9 8l5 2-5 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13h6l-1 8 8-10h-6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 <div class="brand"><b>منصة البوثات</b> · <bdi>Booth Platform</bdi> — اسم عمل مؤقت</div>
@@ -333,7 +356,7 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
       <div class="s"><span class="dot"><span class="ic"><svg><use href="#i-image"/></svg></span></span><span>صور</span></div>
     </div>
     <div class="facts">
-      <div class="card"><span class="big">12</span><p>مساعد <bdi>AI</bdi> متخصّص: قوانين معارض، تصنيع، <bdi>3D</bdi>، تسعير، ويب.</p></div>
+      <div class="card"><span class="big">12</span><p>مساعد <bdi>AI</bdi> متخصّص + منسّق: قوانين معارض، تصنيع، <bdi>3D</bdi>، تسعير، ويب.</p></div>
       <div class="card"><span class="big">1</span><p>بوث تجريبي <bdi>3×3</bdi>، معرض بالرياض.</p></div>
       <div class="card"><span class="big">9</span><p>مساعدين <bdi>AI</bdi> منهم اشتغلوا عالبوث التجريبي، وانفحص شغلهم كلّو ونجحوا.</p></div>
       <div class="card"><span class="big">0</span><p>اشتراك جديد دفعناه.</p></div>
@@ -342,9 +365,34 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
   <p class="src">المصدر: خطة العمل · نتائج تجربة البوث التجريبي</p>
 </section>
 
+<!-- 6 TEAM -->
+<section class="slide" aria-label="مين الفريق">
+  <div class="kicker"><span class="n">06</span> الفريق</div>
+  <h2>مين الفريق</h2>
+  <p class="lead">13 مساعد <bdi>AI</bdi>، كل واحد إلو اختصاص. يحيى بيقرر، هني بيشتغلوا.</p>
+  <div class="legend-g"><span class="g1">تنسيق وبحث</span><span class="g2">تصميم وبناء</span><span class="g3">تسعير وسوق</span><span class="g4">عرض وفحص</span></div>
+  <div class="body" style="justify-content:flex-start;margin-top:18px">
+    <div class="team">
+      <div class="mem g1"><span class="ic"><svg><use href="#i-hub"/></svg></span><div><h3>أحمد</h3><span class="role">المنسّق</span><p>بيوزّع الشغل، بيجمع النتايج، وبيعرض القرارات على يحيى.</p></div></div>
+      <div class="mem g1"><span class="ic"><svg><use href="#i-search"/></svg></span><div><h3>عادل</h3><span class="role">البحث والمعايير</span><p>قوانين المعارض والقاعات بالسعودية والكويت، والسوق.</p></div></div>
+      <div class="mem g2"><span class="ic"><svg><use href="#i-pen"/></svg></span><div><h3>يحيى المفكّر</h3><span class="role">التصميم</span><p>مكتبة البوثات وتجربة العارض.</p></div></div>
+      <div class="mem g2"><span class="ic"><svg><use href="#i-cube"/></svg></span><div><h3>باسل</h3><span class="role">الموديل <bdi>3D</bdi></span><p>بيبني البوث من قطع بقياسات حقيقية.</p></div></div>
+      <div class="mem g2"><span class="ic"><svg><use href="#i-tool"/></svg></span><div><h3>نادر</h3><span class="role">التصنيع</span><p>مواصفات كل قطعة، السلامة، وأيام الشغل.</p></div></div>
+      <div class="mem g3"><span class="ic"><svg><use href="#i-table"/></svg></span><div><h3>مجدي</h3><span class="role">التسعير</span><p>جدول الكميات والكلفة، وطلبات الأسعار من المورّدين.</p></div></div>
+      <div class="mem g2"><span class="ic"><svg><use href="#i-screen"/></svg></span><div><h3>كريم</h3><span class="role">الموقع والتطبيق</span><p>الشاشات، الـ<bdi>3D</bdi> بالمتصفح، وملف الـ<bdi>Excel</bdi>.</p></div></div>
+      <div class="mem g2"><span class="ic"><svg><use href="#i-chat"/></svg></span><div><h3>زياد</h3><span class="role">الذكاء الاصطناعي</span><p>محادثة العميل وكلفة كل طلب.</p></div></div>
+      <div class="mem g2"><span class="ic"><svg><use href="#i-image"/></svg></span><div><h3>ماجد</h3><span class="role">الصور</span><p>صور البوثات والخيارات للعميل.</p></div></div>
+      <div class="mem g3"><span class="ic"><svg><use href="#i-chart"/></svg></span><div><h3>سليم</h3><span class="role">المنتج والسوق</span><p>المراحل، نموذج الربح، والمورّدين.</p></div></div>
+      <div class="mem g4"><span class="ic"><svg><use href="#i-slides"/></svg></span><div><h3>رونا</h3><span class="role">العروض</span><p>بتجهّز العرض والديمو.</p></div></div>
+      <div class="mem g4"><span class="ic"><svg><use href="#i-bolt"/></svg></span><div><h3>القاطع</h3><span class="role">فحص السرعة</span><p>كل شي لازم يفتح بسرعة عالموبايل.</p></div></div>
+      <div class="mem g4"><span class="ic"><svg><use href="#i-shield"/></svg></span><div><h3>الحكم</h3><span class="role">فحص الجودة</span><p>بيراجع كل شغل قبل ما يطلع، وبيرفض الغلط.</p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- 6 HONEST -->
 <section class="slide" aria-label="شو طلع معنا">
-  <div class="kicker"><span class="n">06</span> بصراحة</div>
+  <div class="kicker"><span class="n">07</span> بصراحة</div>
   <h2>شو طلع معنا.</h2>
   <div class="body">
     <div class="honest">
@@ -360,7 +408,7 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
 
 <!-- 7 PLAN -->
 <section class="slide" aria-label="الخطة">
-  <div class="kicker"><span class="n">07</span> الخطة</div>
+  <div class="kicker"><span class="n">08</span> الخطة</div>
   <h2>الخطة بـ4 خطوات.</h2>
   <div class="body">
     <div class="stairs">
@@ -378,7 +426,7 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
 
 <!-- 8 ASKS -->
 <section class="slide" aria-label="شو محتاجين منك">
-  <div class="kicker"><span class="n">08</span> شو محتاجين منك</div>
+  <div class="kicker"><span class="n">09</span> شو محتاجين منك</div>
   <h2>شو محتاجين منك — 5 أشيا.</h2>
   <div class="body">
     <div class="asks">
@@ -403,7 +451,7 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
 
 <!-- 9 TWO WEEKS -->
 <section class="slide" aria-label="الأسبوعين الجايين">
-  <div class="kicker"><span class="n">09</span> الأسبوعين الجايين</div>
+  <div class="kicker"><span class="n">10</span> الأسبوعين الجايين</div>
   <h2>إذا وافقت اليوم:</h2>
   <div class="body">
     <div class="cal" role="img" aria-label="رزنامة أسبوعين: المكتبة على الأسبوعين، طلبات الأسعار بعد موافقة يحيى، تجربة الـAI بالأسبوع التاني">
@@ -418,7 +466,7 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
 
 <!-- 10 CLOSE -->
 <section class="slide close" aria-label="الخلاصة">
-  <div class="kicker"><span class="n">10</span> الخلاصة</div>
+  <div class="kicker"><span class="n">11</span> الخلاصة</div>
   <h1>جدول واحد. كل المنفّذين. مقارنة عادلة.</h1>
   <p class="lead">جرّبنا الطريقة، وقلنالك شو ثبت وشو لسّا.</p>
   <div class="body" style="justify-content:flex-start">
@@ -435,7 +483,7 @@ html.nojs .slide .src{position:static!important;margin-top:16px}
 
 <div class="nav" role="navigation" aria-label="التنقّل بين الشرائح">
   <button id="prev" type="button" aria-label="الشريحة السابقة" title="السابقة">›</button>
-  <span class="count" id="count" dir="ltr" aria-live="polite">1 / 10</span>
+  <span class="count" id="count" dir="ltr" aria-live="polite">1 / 11</span>
   <button id="next" type="button" aria-label="الشريحة التالية" title="التالية">‹</button>
 </div>
 <div class="pbar" aria-hidden="true"><i id="bar"></i></div>
